@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="company.Controller.MainWindowController">
+    <children>
+        <MenuBar fx:id="menu" layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <menus>
+                <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="loadTemplate" mnemonicParsing="false" onAction="#menuHandler" text="Load Saved Template" />
+                        <MenuItem fx:id="saveTemplate" disable="true" mnemonicParsing="false" onAction="#menuHandler" text="Save Template" />
+                        <MenuItem fx:id="saveTemplateAs" disable="true" mnemonicParsing="false" onAction="#menuHandler" text="Save Template As" />
+                    </items>
+                </Menu>
+            <Menu mnemonicParsing="false" text="Misc">
+              <items>
+                  <MenuItem fx:id="aboutUs" mnemonicParsing="false" onAction="#menuHandler" text="About us" />
+              </items>
+            </Menu>
+            </menus>
+        </MenuBar>
+        <TextArea fx:id="textArea" disable="true" layoutY="118.0" prefHeight="232.0" prefWidth="600.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="118.0" />
+        <ToolBar fx:id="actionToolbar" layoutX="86.0" layoutY="360.0" prefHeight="40.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <items>
+                <HBox prefHeight="30.0" prefWidth="373.0" spacing="5.0">
+                    <children>
+                  <Button fx:id="loadContactsButton" layoutX="211.0" layoutY="10.0" mnemonicParsing="false" onAction="#functionHandler" prefHeight="25.0" prefWidth="131.0" text="Load Contacts" />
+                  <Label fx:id="contactListLabel" prefHeight="24.0" prefWidth="185.0" text="No contacts loaded.">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
+                    </children>
+                    <padding>
+                        <Insets left="35.0" />
+                    </padding>
+                </HBox>
+            <HBox alignment="CENTER" prefHeight="5.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="startMergeProcessButton" disable="true" mnemonicParsing="false" onAction="#initiateMailMerge" text="Start Mail Merge Process" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+            </HBox>
+            </items>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </ToolBar>
+      <HBox alignment="CENTER" layoutY="34.0" prefHeight="30.0" prefWidth="193.0" AnchorPane.leftAnchor="0.0">
+         <children>
+            <ChoiceBox fx:id="tagDropdown" onAction="#dropDownHandler" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <Button fx:id="clearTextButton" alignment="CENTER" layoutX="479.0" layoutY="36.0" mnemonicParsing="false" onAction="#functionHandler" prefHeight="25.0" prefWidth="93.0" text="Clear Text" textAlignment="CENTER" AnchorPane.rightAnchor="28.0" />
+      <HBox layoutX="22.0" layoutY="78.0" prefHeight="40.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label prefHeight="35.0" prefWidth="53.0" text="Title:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="subjectText" alignment="CENTER" prefHeight="31.0" prefWidth="483.0" promptText="Enter your title here" />
+         </children>
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+      </HBox>
+    </children>
+</AnchorPane>

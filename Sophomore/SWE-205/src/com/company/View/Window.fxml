@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="root" minWidth="480.0" prefHeight="419.0" prefWidth="537.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.Controller.MainController">
+
+    <children>
+        <MenuBar fx:id="menu" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <menus>
+                <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="newFile" mnemonicParsing="false" onAction="#menuHandler" text="New" />
+                  <MenuItem fx:id="saveFile" mnemonicParsing="false" onAction="#menuHandler" text="Save" />
+                  <MenuItem fx:id="openFile" mnemonicParsing="false" onAction="#menuHandler" text="Open" />
+                  <MenuItem fx:id="closeFile" mnemonicParsing="false" onAction="#menuHandler" text="Close" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+
+        <ToolBar fx:id="shapesToolbar" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="94.0" prefWidth="537.0" scaleShape="false" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+
+            <items>
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="68.0" prefWidth="54.0" spacing="8.0">
+               <children>
+                  <Button fx:id="rectangleButton" mnemonicParsing="false" onAction="#shapeHandler" prefHeight="37.0" prefWidth="38.0">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/rectangle.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="squareButton" layoutX="18.0" layoutY="34.0" mnemonicParsing="false" onAction="#shapeHandler" prefHeight="37.0" prefWidth="38.0">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/square.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="68.0" prefWidth="54.0" spacing="8.0">
+               <children>
+                  <Button fx:id="ellipseButton" mnemonicParsing="false" onAction="#shapeHandler" prefHeight="37.0" prefWidth="38.0">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/ellipse.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="circleButton" layoutX="18.0" layoutY="34.0" mnemonicParsing="false" onAction="#shapeHandler" prefHeight="37.0" prefWidth="38.0">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/circle.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="68.0" layoutY="10.0" prefHeight="68.0" prefWidth="54.0" spacing="8.0">
+               <children>
+                  <Button fx:id="selectButton" mnemonicParsing="false" onAction="#selectShapeHandler" prefHeight="37.0" prefWidth="38.0">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/select.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="lineButton" layoutX="18.0" layoutY="34.0" mnemonicParsing="false" onAction="#shapeHandler" prefHeight="37.0" prefWidth="38.0">
+                     <graphic>
+                        <ImageView fitHeight="59.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/line.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="126.0" layoutY="10.0" prefHeight="68.0" prefWidth="54.0" spacing="8.0">
+               <children>
+                  <Button fx:id="freeDrawButton" mnemonicParsing="false" onAction="#freeDrawHandler" prefHeight="37.0" prefWidth="38.0">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/pen.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="eraserButton" layoutX="18.0" layoutY="34.0" mnemonicParsing="false" onAction="#freeDrawHandler" prefHeight="37.0" prefWidth="38.0">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/eraser.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="68.0" layoutY="10.0" prefHeight="84.0" prefWidth="129.0" spacing="8.0">
+               <children>
+                  <ColorPicker fx:id="colorPicker" onAction="#colorHandler" prefHeight="25.0" prefWidth="139.0" />
+                  <CheckBox fx:id="linearGradient" disable="true" mnemonicParsing="false" text="Linear Gradient" />
+                  <Text fill="#908c8c" strokeType="OUTSIDE" strokeWidth="0.0" text="Coming soon!">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="242.0" layoutY="10.0" prefHeight="84.0" prefWidth="148.0" spacing="8.0">
+               <children>
+                  <Slider fx:id="brushSlider" min="1.0" minorTickCount="0" onMouseDragged="#setSliderValue" onMouseReleased="#setSliderValue" prefHeight="24.0" prefWidth="157.0" showTickMarks="true">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Slider>
+                  <Label fx:id="sliderLabel" text="Brush Size: 1" />
+               </children>
+               <padding>
+                  <Insets left="11.0" />
+               </padding>
+            </VBox>
+            </items>
+        </ToolBar>
+      <Canvas fx:id="canvas" height="241.0" layoutY="124.0" width="537.0" AnchorPane.rightAnchor="0.0">
+         <effect>
+            <InnerShadow blurType="GAUSSIAN" />
+         </effect></Canvas>
+        <ToolBar fx:id="propertiesToolbar" layoutY="386.0" prefHeight="58.0" prefWidth="537.0">
+            <items>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="49.0" prefWidth="84.0" spacing="9.0">
+               <children>
+                  <Label alignment="CENTER" text="Height:" />
+                  <TextField fx:id="heightProperty" onAction="#propertiesHandler" prefHeight="25.0" prefWidth="30.0" />
+               </children>
+            </HBox>
+                <HBox alignment="CENTER" prefHeight="49.0" prefWidth="74.0" spacing="9.0">
+                    <children>
+                        <Label alignment="CENTER" text="Width:" />
+                        <TextField fx:id="widthProperty" disable="true" onAction="#propertiesHandler" prefHeight="25.0" prefWidth="30.0" />
+                    </children>
+                </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="49.0" prefWidth="89.0" spacing="9.0">
+               <children>
+                  <Label alignment="CENTER" text="Radius 1:" />
+                  <TextField fx:id="radius1Property" disable="true" onAction="#propertiesHandler" prefHeight="25.0" prefWidth="30.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="333.0" layoutY="10.0" prefHeight="49.0" prefWidth="99.0" spacing="9.0">
+               <children>
+                  <Label alignment="CENTER" text="Radius 2:" />
+                  <TextField fx:id="radius2Property" disable="true" onAction="#propertiesHandler" prefHeight="25.0" prefWidth="30.0" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+                <ColorPicker fx:id="colorProperty" disable="true" onAction="#propertiesHandler" prefHeight="25.0" prefWidth="85.0" />
+            <Button fx:id="deletePropertyButton" disable="true" mnemonicParsing="false" onAction="#propertiesHandler" prefHeight="25.0" prefWidth="61.0" text="Delete" />
+            </items>
+        </ToolBar>
+    </children>
+</AnchorPane>
