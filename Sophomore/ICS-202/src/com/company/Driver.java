@@ -54,14 +54,15 @@ public class Driver {
                 default:
                     System.out.println("Invalid selection!");
             }
+            System.out.println();
+            System.out.println();
         }
     }
 
     public static void printMenu() {
-        System.out.println(
+        System.out.print(
                 String.join("\n",
-                        "=================================================",
-                        "---Enter your choice---",
+                        "\n\n=================================================",
                         "1) Create an empty Trie",
                         "2) Create a trie with initial letters",
                         "3) Insert a word",
@@ -72,7 +73,8 @@ public class Driver {
                         "8) Check whether a word exists in the Trie",
                         "9) Check whether a word is a prefix in the Trie",
                         "10) End the program",
-                        "================================================="
+                        "=================================================\n\n",
+                        "Enter your choice: "
                 )
         );
     }

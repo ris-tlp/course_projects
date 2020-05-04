@@ -24,7 +24,7 @@ public class TrieNode {
      * @return {@code HashMap<Character, TrieNode} containing all the letters in the {@link TrieNode}
      */
     public HashMap<Character, TrieNode> getLetters() {
-        return letters;
+        return this.letters;
     }
 
     /**
@@ -37,10 +37,10 @@ public class TrieNode {
 
     /**
      * @return {@code true} if the current {@link TrieNode}
-     *                      is the end of a word
+     * is the end of a word
      */
     public boolean isEndOfWord() {
-        return endOfWord;
+        return this.endOfWord;
     }
 
     /**
@@ -53,22 +53,25 @@ public class TrieNode {
     /**
      * @return {@code char} containing the letter of the {@link TrieNode}
      */
-    public char getValue() {
-        return value;
-    }
+    public char getValue() { return this.value; }
 
     /**
      * @param value {@code char} containing the letter of the {@link TrieNode}
      */
-    public void setValue(char value) {
-        this.value = value;
+    public void setValue(char value) { this.value = value; }
+
+    /**
+     * @return {@code true} if the node has no existing letters
+     */
+    public boolean isEmpty() {
+        return this.letters.isEmpty();
     }
 
     @Override
     public String toString() {
         return "TrieNode{" +
-                "letters=" + letters +
-                ", endOfWord=" + endOfWord +
+                "letters=" + this.letters +
+                ", endOfWord=" + this.endOfWord +
                 '}';
     }
 }

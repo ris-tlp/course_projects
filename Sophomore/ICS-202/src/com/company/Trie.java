@@ -46,7 +46,7 @@ public class Trie {
             if (subNode == null) return false;
             currentNode = subNode;
         }
-        return true;
+        return !currentNode.getLetters().isEmpty() || currentNode.isEndOfWord();
     }
 
 
@@ -68,7 +68,7 @@ public class Trie {
             if (subNode == null) {
                 subNode = new TrieNode(letter);
                 currentNode.getLetters().put(letter, subNode);
-                numberOfNodes++;
+                this.numberOfNodes++;
             }
             currentNode = subNode;
         }
@@ -98,29 +98,37 @@ public class Trie {
                 stack.add(currentNode);
             }
 
-            // If the entire word is a prefix to another word, only mark it as incomplete
+            // Only unmark word if it is a prefix
             if (isPrefix(word) && !currentNode.getLetters().isEmpty()) {
                 currentNode.setEndOfWord(false);
-            } else {
-                char nextLetter = stack.pop().getValue(); // Get the last letter in the word
-                currentNode = stack.pop(); // Get the node that points to the last letter
+            }
 
-                do {
-                    // If the currentNode only consists of the nextLetter, then clear the entire Map
-                    // Otherwise, only remove the nextLetter reference from the currentNode and nothing else
-                    if (currentNode.getLetters().size() == 1) {
-                        currentNode.getLetters().clear();
-                        numberOfNodes--;
-                    } else {
-                        currentNode.getLetters().remove(nextLetter);
-                        numberOfNodes--;
-                        break;
-                    }
-                } while (!stack.isEmpty());
+            // The word is not a prefix
+            else if (currentNode.getLetters().isEmpty()) {
+                char currentLetter = stack.pop().getValue();
+                currentNode = stack.pop();
+
+                while (!stack.isEmpty()) {
+                    word = word.substring(0, word.length() - 1); // current word after a letter has been removed
+
+                    // Remove the letter from the current node
+                    currentNode.getLetters().remove(currentLetter);
+                    this.numberOfNodes--;
+
+                    // Break out of the loop if the current word is a prefix
+                    if (currentNode.isEndOfWord() || isPrefix(word)) break;
+                    currentLetter = currentNode.getValue();
+                    currentNode = stack.pop();
+                }
+
+                // If the letter in the root node is now empty, delete it
+                if (this.root.getLetters().get(currentLetter) != null && this.root.getLetters().get(currentLetter).isEmpty()) {
+                    this.root.getLetters().remove(currentLetter);
+                    this.numberOfNodes--;
+                }
             }
         }
     }
-
 
     /**
      * Finds all words that start with a specified prefix
@@ -163,23 +171,26 @@ public class Trie {
     public void printAll() {
         ArrayList<String> allWords = new ArrayList();
 
-        for (TrieNode node : root.getLetters().values()) {
+        for (TrieNode node : this.root.getLetters().values()) {
             if (node != null) {
                 fetchWords(allWords, node.getValue() + "", node);
             }
         }
 
-        for (String word : allWords) {
-            System.out.print(String.format("(%s) ", word));
+        if (allWords.size() == 0) System.out.println("Your Trie is empty.");
+        else {
+            for (String word : allWords) {
+                System.out.print(String.format("(%s) ", word));
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 
     /**
      * Helper method for visiting words in the {@link Trie}
      *
-     * @param allWords {@code ArrayList<String>} containing all
-     *                                          the words found
+     * @param allWords    {@code ArrayList<String>} containing all
+     *                    the words found
      * @param currentWord Current word found in the recursive call
      * @param currentNode Reference to the current {@link TrieNode}
      *                    in the recursive call
@@ -205,6 +216,7 @@ public class Trie {
 
     /**
      * Returns the total number of nodes in the {@link Trie}
+     *
      * @return {@code int}
      */
     public int size() {

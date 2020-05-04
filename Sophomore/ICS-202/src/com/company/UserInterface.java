@@ -38,7 +38,7 @@ public class UserInterface {
     public void initialCreation() {
         trie = new Trie();
 
-        System.out.println("Enter the list of letters you'd like to initially populate the Trie with");
+        System.out.print("Enter the list of letters you'd like to initially populate the Trie with: ");
         HashSet<String> subsets = generatePermutations(input.next().toUpperCase());
 
         for (String subset : subsets) {
@@ -56,7 +56,7 @@ public class UserInterface {
         if (isNotInitialized()) {
             System.out.println("Please create your Trie using Choices 1 or 2 first.");
         } else {
-            System.out.println("Enter your word.");
+            System.out.print("Enter the word you'd like to insert into the Trie: ");
             trie.insert(input.next().toUpperCase());
         }
     }
@@ -70,7 +70,7 @@ public class UserInterface {
         if (isNotInitialized()) {
             System.out.println("Please create your Trie using Choices 1 or 2 first.");
         } else {
-            System.out.println("Enter your word.");
+            System.out.print("Enter the word you'd like to delete from the Trie: ");
             trie.delete(input.next().toUpperCase());
         }
     }
@@ -83,7 +83,7 @@ public class UserInterface {
         if (isNotInitialized()) {
             System.out.println("Please create your Trie using Choices 1 or 2 first.");
         } else {
-            System.out.println("Enter your prefix");
+            System.out.print("Enter your prefix: ");
             String[] words = trie.allWordsPrefix(input.next().toUpperCase());
 
             if (words != null)
@@ -125,7 +125,7 @@ public class UserInterface {
         if (isNotInitialized()) {
             System.out.println("Please create your Trie using Choices 1 or 2 first.");
         } else {
-            System.out.println("Enter your word.");
+            System.out.print("Enter your word: ");
 
             if (trie.contains(input.next().toUpperCase())) {
                 System.out.println("It exists in the Trie.");
@@ -143,7 +143,7 @@ public class UserInterface {
         if (isNotInitialized()) {
             System.out.println("Please create your Trie using Choices 1 or 2 first.");
         } else {
-            System.out.println("Enter your word.");
+            System.out.print("Enter your word: ");
 
             if (trie.isPrefix(input.next().toUpperCase())) {
                 System.out.println("It is a prefix.");
@@ -207,7 +207,6 @@ public class UserInterface {
 
 
     private void generatePermutationsRecursive(String permutation, String currentString, HashSet<String> permutations) {
-
         if (currentString.length() == 0) {
             permutations.add(permutation);
         }
@@ -215,7 +214,6 @@ public class UserInterface {
         for (int i = 0; i < currentString.length(); i++) {
             String newSubset = permutation + currentString.charAt(i);
             String newCurrentString = currentString.substring(0, i) + currentString.substring(i + 1);
-
             generatePermutationsRecursive(newSubset, newCurrentString, permutations);
         }
     }
