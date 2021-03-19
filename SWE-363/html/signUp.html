@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
+    <link rel="stylesheet" href="../assets/css/formPages.css">
+</head>
+
+<body style="background-color: #f1f7fc;">
+    <h2 class="text-center" style="color: #000000;font-size: 30px;min-width: 15px;margin-top: 40px;margin-right: 40px;margin-bottom: 20px;margin-left: 40px;font-family: 'Nanum Gothic', sans-serif;">
+        <strong>Create</strong> an account</h2>
+    <div class="d-flex flex-grow-1 flex-shrink-1 flex-fill justify-content-center align-content-center align-self-center m-auto form-container" style="width: 80%;min-width: auto;max-width: 450px;height: auto;margin: 0px;margin-top: 0px;margin-right: 20%;margin-bottom: 0px;margin-left: 20%;">
+        <form class="text-center d-flex float-none flex-column flex-grow-1 flex-shrink-1 flex-fill align-content-center align-self-center justify-content-sm-center" id="form" style="width: 80%;height: 80%;margin: 50px 60px;background-color: #ffffff;max-width: 350px;margin-top: 25px;"
+            method="post" name="form"><input class="form-control align-self-center" type="text" style="width: 80%;height: 20%;margin-right: 45%;margin-left: 45%;margin-bottom: 20px;background-color: #f7f9fc;margin-top: 20px;font-family: 'Nanum Gothic', sans-serif;font-size: 75%;"
+                placeholder="User Name" name="username">
+            <p id="usernameErrorText" style="font-size: 10px;margin-top: -20px;color: red;display: none;">Please enter your username</p><input class="form-control align-self-center" type="email" style="width: 80%;height: 20%;margin-right: 45%;margin-bottom: 20px;margin-left: 45%;background-color: #f7f9fc;font-family: 'Nanum Gothic', sans-serif;font-size: 75%;"
+                placeholder="Email" name="email">
+            <p id="emailErrorText" style="font-size: 10px;margin-top: -20px;color: red;display: none;">Please enter your username
+            </p><input class="form-control align-self-center" type="password" style="width: 80%;height: 20%;margin: 0px 28px;margin-right: 45%;margin-left: 45%;min-width: 0px;margin-bottom: 20px;background-color: #f7f9fc;font-family: 'Nanum Gothic', sans-serif;font-size: 75%;"
+                placeholder="Password" name="password">
+            <p id="passwordErrorText" style="font-size: 10px;margin-top: -20px;color: red;display: none;">Please enter your username</p><input class="form-control align-self-center" type="password" style="width: 80%;height: 20%;margin: 0px 28px;margin-right: 45%;margin-left: 45%;min-width: 0px;margin-bottom: 20px;background-color: #f7f9fc;font-family: 'Nanum Gothic', sans-serif;font-size: 75%;"
+                placeholder="Password (repeat)" name="reenter">
+            <p id="repasswordErrorText" style="font-size: 10px;margin-top: -20px;color: red;display: none;">Please enter your username</p>
+            <div class="align-self-center col-md-6 radio-inline">
+                <fieldset data-role="controlgroup">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="bt" id="instructor"><label class="form-check-label" for="formCheck-1" style="font-family: 'Nanum Gothic', sans-serif;">Instructor</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="bt" id="student"><label class="form-check-label" for="formCheck-2" style="font-family: 'Nanum Gothic', sans-serif;">Student</label>
+                        <fieldset data-role="controlgroup">
+                    </div>
+                    <p id="checkboxErrorText" style="font-size: 10px;color: red;display: none;">Please enter your username
+                    </p>
+            </div>
+            <button class="btn btn-primary" type="button" style="margin-right: 10%;margin-left: 10%;margin-top: 30px;background-color: #d8dbe2;color: #505e6c;height: 50px;margin-bottom: 30px;font-family: 'Nanum Gothic', sans-serif;" onclick="signUpvalidation()">&nbsp;Sign up</button>
+            <a href="signIn.html" style="font-family: 'Nanum Gothic', sans-serif;"><br>Already have an account? Login here.<br><br></a>
+        </form>
+    </div>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/formValidation.js"></script>
+</body>
+
+</html>

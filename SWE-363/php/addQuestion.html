@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Add Question</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="../assets/css/practicePages.css">
+</head>
+
+<body style="/*background-color: #d8dbe2;*/">
+    <nav class="navbar navbar-light navbar-expand-md d-flex flex-grow-0 navigation-clean">
+        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span
+                    class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <picture><img src="../assets/img/logo.jpg" style="width: 75px;height: 50px;border-radius: 50px;" alt="Logo">
+            </picture><a class="navbar-brand" href="#" style="padding: 5px 25px;color: rgb(216,219,226);font-family: Raleway, sans-serif;text-transform: uppercase;font-size: 27px;">Online
+                Examination System</a>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto" id="navbar-toggle">
+                    <li class="nav-item" role="presentation" id="nav-dropdown"><a class="nav-link" href="createTest.html">Create Assessment<br></a></li>
+                    <li class="nav-item" role="presentation" id="nav-dropdown"><a class="nav-link" href="addPracticeQuestions.html">Add Practice Questions</a></li>
+                    <li class="nav-item" role="presentation" id="nav-dropdown"><a class="nav-link" href="viewScores.html">View Scores</a></li>
+                    <li class="nav-item" role="presentation" id="nav-dropdown"><a class="nav-link" href="instructorSchedule.html">View Schedule</a></li>
+                    <li class="nav-item" role="presentation" id="nav-dropdown"><a class="nav-link" href="accountPage.html">My Account</a></li>
+                    <li class="nav-item" role="presentation" id="nav-dropdown"><a class="nav-link" href="../signIn.html" style="color: red;">Log Out</a></li>
+                </ul>
+            </div><button class="btn btn-primary text-center" data-toggle="tooltip" data-bs-tooltip="" id="logout-btn" type="submit" title="Log Out" onclick="window.location.href='../signIn.html'" style="background-color: rgb(216,219,226);color: rgb(0,0,0);width: 127px;">Log Out</button>
+        </div>
+    </nav>
+    <section class="d-flex">
+        <section id="nav-area" style="/*margin-right: 10px;*/width: 240px;max-width: 240px;/*min-width: 150px;*/height: 100vh;min-height: 50%;">
+            <section id="profile-section" style="width: 240px;height: 200px;background-image: linear-gradient(to top, rgb(169,188,208), rgb(135, 178, 195));text-align: center;padding-top: 15px;min-height: 200px;">
+                <picture><img src="../assets/img/p.png" style="width: 121px;margin: auto;" alt="Profile picture">
+                </picture>
+                <p style="padding: 20px;font-family: Raleway, sans-serif;margin: auto;"><strong>PROFILE NAME</strong>
+                </p>
+            </section>
+            <section style="height: 100vh;background-image: linear-gradient(to bottom, rgb(27, 27, 30), rgb(55, 63, 81));min-height: 100vh;">
+                <div id="nav-items" style="width: inherit;height: 100vh;"><a href="createTest.html">Create
+                        Assessment<br></a><a href="addPracticeQuestions.html">Add Practice Questions<br></a><a href="viewScores.html">View Scores<br></a><a href="instructorSchedule.html">View
+                        Schedule<br></a><a href="accountPage.html">My Account</a></div>
+            </section>
+        </section>
+        <section id="main-area">
+            <div id="question-area">
+                <div class="dropdown" id="dropdown-menu"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="dropdown" type="button">Selection Question
+                        Type</button>
+                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" id="mcqOption" href="#" value="mcq">MCQ</a><a class="dropdown-item" role="presentation" id="shortAnswerOption" href="#" value="short-answer">Short Answer</a><a class="dropdown-item" role="presentation"
+                            id="trueFalseOption" href="#" value="true-false">True / False</a></div>
+                </div>
+                <h1 id="tempText" style="margin-top: -20px;text-align: center;">Please select a question type.</h1>
+                <div id="borderMCQ">
+                    <h1 style="font-size: 25px;margin-right: 2px;font-family: 'Raleway';"><strong>MCQ</strong></h1>
+                    <form action="addQuestion.php" method="POST">
+                        <input type="hidden" name="type" value="MCQ" />
+                        <!-- assessment_ID, test_ID Values Should Be Brought From Database -->
+                        <input type="hidden" name="assessment_ID" value="1" />
+                        <input type="hidden" name="test_ID" value="1" />
+                        <label class="float-left" style="width: 100%;min-width: 50%;max-width: 100%;font-family: 'Raleway';">Points<input
+                            type="number" style="margin-left: 5px;width: 30%;max-width: 40px;" name="points"></label><label style="font-family: 'Raleway';">Question:&nbsp;<input type="text" name="description"
+                            style="width: 70%;max-width: 70%;min-width: auto;"></label>
+                        <ol style="width: 100%;min-width: 20%;max-width: 768px;/*width: 500px;*//*list-style-type: none;*/">
+                            <li><input type="text" style="width: 50%;min-width: 20%;max-width: 250px;" name="choice1"></li>
+                            <li><input type="text" style="width: 50%;min-width: 20%;max-width: 250px;" name="choice2"></li>
+                            <li><input type="text" style="width: 50%;min-width: 20%;max-width: 250px;" name="choice3"></li>
+                            <li><input type="text" style="width: 50%;min-width: 20%;max-width: 250px;" name="choice4"></li>
+                        </ol><label style="font-family: 'Raleway';">Answer:&nbsp;<input type="text" name="answer"
+                                style="width: 20%;min-width: 10%;max-width: 20%;flex-basis: 100%;"></label><input type="file" style="/*width: 100%;*//*min-width: 40%;*//*max-width: 100%;*/width: 240px;">
+                        <button class="btn btn-primary" id="addQuestionBtn" type="submit">Add</button>
+                    </form>
+                </div>
+                <div id="borderShortAnswer">
+                    <h1 style="font-size: 25px;margin: auto;text-align: center;"><strong>Short answer</strong></h1>
+                    <form action="addQuestion.php" method="POST">
+                        <input type="hidden" name="type" value="Short answer" />
+                        <!-- assessment_ID, test_ID Values Should Be Brought From Database -->
+                        <input type="hidden" name="assessment_ID" value="1" />
+                        <input type="hidden" name="test_ID" value="1" />
+                        <label class="float-left" style="width: 100%;min-width: 50%;max-width: 100%;">Points<input
+                            type="number" name="points"
+                            style="margin-left: 5px;width: 30%;max-width: 40px;"></label><label>Question:&nbsp;<input
+                            type="text" name="description" style="width: 70%;max-width: 70%;min-width: auto;"></label>
+                        <input type="file" style="/*width: 100%;*//*min-width: 40%;*//*max-width: 100%;*//*margin-bottom: 10px;*/width: 240px;margin-left: 25px;">
+                        <button class="btn btn-primary" type="submit">Add</button>
+                    </form>
+                </div>
+                <div id="borderTrueFalse">
+                    <h1 style="font-size: 25px;margin-right: 2px;text-align: center;"><strong>True/False</strong></h1>
+                    <form action="./addQuestion.php" method="POST">
+                        <input type="hidden" name="type" value="True/False" />
+                        <!-- assessment_ID, test_ID Values Should Be Brought From Database -->
+                        <input type="hidden" name="assessment_ID" value="1" />
+                        <input type="hidden" name="test_ID" value="1" />
+                        <label class="float-left" style="width: 100%;min-width: 50%;max-width: 100%;">Points<input
+                            type="number" name="points" style="width: 30%;max-width: 40px;margin: 5px;"></label><label style="margin: 5px;">Question:&nbsp;<input type="text" name="description"
+                            style="width: 70%;max-width: 70%;min-width: auto;"></label>
+                        <input type="file" style="width: 240px;/*margin-top: 5px;*//*margin-left: 20px;*/margin: 5px;"><label style="width: 100%;margin-top: 5px;margin: 5px;">Answer:&nbsp;<select name="answer">
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                        </select></label>
+                        <button class="btn btn-primary" type="submit">Add</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </section>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bs-init.js"></script>
+    <script src="../assets/js/dropdown.js"></script>
+</body>
+
+</html>
